@@ -87,6 +87,8 @@
 
 // ↑ 元々のmain画面！OKのやつ！
 
+// 下のメニュー参考：https://dev.classmethod.jp/articles/flutter-bottom-navigation/
+
 import 'package:flutter/material.dart';
 import 'package:my_app/next.dart';
 import 'package:my_app/next2.dart';
@@ -113,7 +115,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.orange,
       ),
       home: const MyStatefulWidget(),
     );
@@ -147,9 +149,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           onTap: _onItemTapped,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'ルーレット'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.access_time_filled), label: '現在時刻'),
+                icon: Icon(Icons.refresh_sharp), label: 'Roulette'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.access_time_filled), label: 'Time'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.access_alarm), label: 'アラーム'),
           ],

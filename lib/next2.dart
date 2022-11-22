@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/next3.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NextPage2 extends StatelessWidget {
   // 前ページで入力した(ありがとう！！！)をnameに代入
@@ -11,7 +12,13 @@ class NextPage2 extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("3つ目の画面！"),
+        title: Text(
+          "Home",
+          style: GoogleFonts.nanumPenScript(
+            color: Color(0xFF000000),
+            fontSize: 35,
+          ),
+        ),
       ),
       body: Center(
         child: Column(

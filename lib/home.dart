@@ -5,7 +5,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/alarm.dart';
-import 'package:my_app/Pages/add_edit_alarm.dart';
+import 'package:my_app/add_edit_alarm.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
