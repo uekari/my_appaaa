@@ -42,7 +42,10 @@ class _AddEditAlarmPage extends State<AddEditAlarmPage> {
         leading: GestureDetector(
           child: Container(
             alignment: Alignment.center,
-            child: Text("キャンセル", style: TextStyle(color: Colors.amber)),
+            child: Icon(
+              Icons.highlight_off,
+              color: Colors.white,
+            ),
           ),
           onTap: () {
             Navigator.pop(context);
@@ -53,7 +56,8 @@ class _AddEditAlarmPage extends State<AddEditAlarmPage> {
             child: Container(
               padding: EdgeInsets.only(right: 20),
               alignment: Alignment.center,
-              child: Text("アラームを保存", style: TextStyle(color: Colors.amber)),
+              child: Text("保存",
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
             ),
             onTap: () {
               Alarm alarm = Alarm(
@@ -69,25 +73,40 @@ class _AddEditAlarmPage extends State<AddEditAlarmPage> {
             },
           )
         ],
-        backgroundColor: Colors.black87,
+        backgroundColor: Color.fromRGBO(166, 193, 238, 1),
         title: Text("アラームを追加", style: TextStyle(color: Colors.white)),
       ),
       body: Container(
         height: double.infinity,
-        color: Colors.black,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Color.fromRGBO(166, 193, 238, 1),
+              Color.fromRGBO(251, 194, 235, 1),
+            ],
+                stops: const [
+              0.0,
+              1.0,
+            ])),
+
+        // color: Colors.black,
         child: Column(
           children: [
-            SizedBox(height: 0),
+            SizedBox(height: 45),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 80),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("時間", style: TextStyle(color: Colors.white)),
+                  Text("時間",
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
                   Container(
-                    width: 70,
+                    width: 90,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.orange),
+                      border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextField(
