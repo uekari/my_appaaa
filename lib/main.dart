@@ -113,7 +113,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.cyan,
       ),
       home: const MyStatefulWidget(),
     );
@@ -149,8 +149,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
             BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'ルーレット'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.notifications), label: '現在時刻'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'アカウント'),
+                icon: Icon(Icons.access_time_filled), label: '現在時刻'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.access_alarm), label: 'アラーム'),
           ],
           type: BottomNavigationBarType.fixed,
         ));

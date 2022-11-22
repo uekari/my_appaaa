@@ -77,7 +77,7 @@ class _AddEditAlarmPage extends State<AddEditAlarmPage> {
         color: Colors.black,
         child: Column(
           children: [
-            SizedBox(height: 50),
+            SizedBox(height: 0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
