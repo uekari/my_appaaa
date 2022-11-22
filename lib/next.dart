@@ -19,7 +19,7 @@ class NextPage extends StatelessWidget {
               // 文字のスタイル変更
               style: TextStyle(
                 fontSize: 30,
-                color: Colors.orange,
+                color: Color.fromARGB(255, 226, 185, 182),
               ),
             ),
             Text("目指せ優勝！"),
