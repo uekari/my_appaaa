@@ -5,7 +5,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/alarm.dart';
-import 'package:my_app/add_edit_alarm.dart';
+import 'package:my_app/Pages/add_edit_alarm.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
@@ -62,84 +62,100 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
-      body: CustomScrollView(
-        slivers: [
-          CupertinoSliverNavigationBar(
-            backgroundColor: Colors.black,
-            largeTitle: Text(
-              "アラーム",
-              style: TextStyle(color: Colors.white),
-            ),
-            trailing: GestureDetector(
-              child: Icon(
-                Icons.add,
-                color: Colors.amber,
+      // backgroundColor: Colors.grey,
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: FractionalOffset.topLeft,
+                end: FractionalOffset.bottomRight,
+                colors: [
+              Color.fromARGB(187, 21, 165, 5).withOpacity(0.6),
+              const Color(0xff9941d8).withOpacity(0.6),
+            ],
+                stops: const [
+              0.0,
+              1.0,
+            ])),
+        child: CustomScrollView(
+          slivers: [
+            CupertinoSliverNavigationBar(
+              backgroundColor: Colors.black,
+              largeTitle: Text(
+                "アラーム",
+                style: TextStyle(color: Colors.white),
               ),
-              onTap: () async {
-                // 画面遷移、非同期処理
-                await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AddEditAlarmPage(AlarmList)));
-                setState(() {
-                  AlarmList.sort(
-                      ((a, b) => a.alarmTime.compareTo(b.alarmTime)));
-                });
-              },
+              trailing: GestureDetector(
+                child: Icon(
+                  Icons.add,
+                  color: Colors.amber,
+                ),
+                onTap: () async {
+                  // 画面遷移、非同期処理
+                  await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AddEditAlarmPage(AlarmList)));
+                  setState(() {
+                    AlarmList.sort(
+                        ((a, b) => a.alarmTime.compareTo(b.alarmTime)));
+                  });
+                },
+              ),
             ),
-          ),
-          SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-            Alarm alarm = AlarmList[index];
-            return Column(
-              children: [
-                Slidable(
-                  key: const ValueKey(0),
-                  endActionPane:
-                      // ignore: prefer_const_constructors
-                      ActionPane(
-                          motion: const ScrollMotion(),
-                          dismissible: DismissiblePane(onDismissed: () {}),
-                          children: const [
-                        // SlidableAction(
-                        //   onPressed: doNothing,
-                        //   icon: Icons.delete,
-                        //   backgroundColor: Colors.red,
-                        //   label: "削除",
-                        // ),
-                      ]),
-                  child: ListTile(
-                    title: Text(DateFormat("H:mm").format(alarm.alarmTime),
-                        style: TextStyle(color: Colors.white, fontSize: 50)),
-                    trailing: CupertinoSwitch(
-                      value: alarm.isActive,
-                      onChanged: (newValue) {
+            SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+              Alarm alarm = AlarmList[index];
+              return Column(
+                children: [
+                  Slidable(
+                    key: const ValueKey(0),
+                    endActionPane:
+                        // ignore: prefer_const_constructors
+                        ActionPane(
+                            motion: const ScrollMotion(),
+                            dismissible: DismissiblePane(onDismissed: () {}),
+                            children: const [
+                          // SlidableAction(
+                          //   onPressed: doNothing,
+                          //   icon: Icons.delete,
+                          //   backgroundColor: Colors.red,
+                          //   label: "削除",
+                          // ),
+                        ]),
+                    child: ListTile(
+                      title: Text(DateFormat("H:mm").format(alarm.alarmTime),
+                          style: TextStyle(color: Colors.white, fontSize: 50)),
+                      trailing: CupertinoSwitch(
+                        value: alarm.isActive,
+                        onChanged: (newValue) {
+                          setState(() {
+                            alarm.isActive = newValue;
+                          });
+                        },
+                      ),
+                      onTap: () async {
+                        // 非同期処理
+                        await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    AddEditAlarmPage(AlarmList, index: index)));
                         setState(() {
-                          alarm.isActive = newValue;
+                          AlarmList.sort(
+                              ((a, b) => a.alarmTime.compareTo(b.alarmTime)));
                         });
                       },
                     ),
-                    onTap: () async {
-                      // 非同期処理
-                      await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  AddEditAlarmPage(AlarmList, index: index)));
-                      setState(() {
-                        AlarmList.sort(
-                            ((a, b) => a.alarmTime.compareTo(b.alarmTime)));
-                      });
-                    },
-                  ),
-                )
-              ],
-            );
-          },
-                  // アラームリストを何個作るかを設定
-                  childCount: AlarmList.length)),
-        ],
+                  )
+                ],
+              );
+            },
+                    // アラームリストを何個作るかを設定
+                    childCount: AlarmList.length)),
+          ],
+        ),
       ),
     );
   }
