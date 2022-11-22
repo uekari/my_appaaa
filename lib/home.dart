@@ -1,11 +1,10 @@
 import 'dart:async';
 // import 'dart:js';
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/alarm.dart';
-import 'package:my_app/Pages/add_edit_alarm.dart';
+import 'package:my_app/add_edit_alarm.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
@@ -68,11 +67,11 @@ class _HomepageState extends State<Homepage> {
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin: FractionalOffset.topLeft,
-                end: FractionalOffset.bottomRight,
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
                 colors: [
-              Color.fromARGB(187, 21, 165, 5).withOpacity(0.6),
-              const Color(0xff9941d8).withOpacity(0.6),
+              Color.fromRGBO(166, 193, 238, 1),
+              Color.fromRGBO(251, 194, 235, 1),
             ],
                 stops: const [
               0.0,
@@ -81,15 +80,15 @@ class _HomepageState extends State<Homepage> {
         child: CustomScrollView(
           slivers: [
             CupertinoSliverNavigationBar(
-              backgroundColor: Colors.black,
+              backgroundColor: Color.fromRGBO(166, 193, 238, 0.3),
               largeTitle: Text(
-                "アラーム",
+                "リスト",
                 style: TextStyle(color: Colors.white),
               ),
               trailing: GestureDetector(
                 child: Icon(
-                  Icons.add,
-                  color: Colors.amber,
+                  Icons.add_circle,
+                  color: Colors.white,
                 ),
                 onTap: () async {
                   // 画面遷移、非同期処理
