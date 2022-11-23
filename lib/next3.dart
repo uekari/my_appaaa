@@ -160,6 +160,15 @@ class _HomePageState extends State<HomePage>
                       hintText: "name",
                     ),
                   ),
+                  TextField(
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Color.fromARGB(255, 130, 219, 63),
+                      ),
+                      hintText: "name",
+                    ),
+                  ),
                 ]),
               ),
             ],
