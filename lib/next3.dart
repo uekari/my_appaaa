@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage>
               top: 20,
             ),
           ),
-          Text("順番を決めよう！"),
+          Text("順番を決めよう！！！！！"),
           Column(
             children: [
               Padding(
