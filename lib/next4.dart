@@ -49,30 +49,61 @@ class _TimerState extends State<NextPage4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Time",
-          style: GoogleFonts.nanumPenScript(
-            color: Color.fromARGB(255, 249, 249, 250),
-            fontSize: 40,
-          ),
-        ),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: ListView(
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              child: Text(
-                '現在時刻：\n' + _nowtime,
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.orange,
+      body: Center(
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                Color.fromRGBO(251, 194, 235, 1),
+                Color.fromRGBO(166, 193, 238, 1),
+              ],
+                  stops: const [
+                0.0,
+                1.0,
+              ])),
+          padding: EdgeInsets.all(20),
+          child: ListView(
+            children: <Widget>[
+              SizedBox(height: 45),
+              Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          _nowtime.substring(12, 17),
+                          style: TextStyle(
+                            fontSize: 100,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Text(
+                          _nowtime.substring(17, 19),
+                          style: TextStyle(
+                            fontSize: 70,
+                            color: Colors.grey,
+                          ),
+                        )
+                      ],
+                    ),
+                    Text(
+                      _nowtime.substring(0, 11),
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
