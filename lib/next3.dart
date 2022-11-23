@@ -46,6 +46,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:roulette/roulette.dart';
 
@@ -55,7 +56,7 @@ class NextPage3 extends StatelessWidget {
     return MaterialApp(
       title: 'Roulette',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
       home: const HomePage(),
     );
@@ -78,11 +79,12 @@ class _HomePageState extends State<HomePage>
   void initState() {
     _controller = RouletteController(
         group: RouletteGroup([
-          //ここに項目を追加。「no.Text」を「text」にするとテキストを表示できる
-          const RouletteUnit.text("うさgi"),
-          const RouletteUnit.noText(color: Color.fromARGB(255, 131, 227, 134)),
-          const RouletteUnit.noText(color: Color.fromARGB(255, 132, 195, 247)),
-          const RouletteUnit.noText(color: Color.fromARGB(255, 237, 162, 43)),
+          //ここに項目を追加。「noText」を「text」にするとテキストを表示できる
+          const RouletteUnit.noText(color: Colors.pink),
+          const RouletteUnit.noText(color: Color.fromARGB(255, 78, 192, 245)),
+          const RouletteUnit.noText(color: Color.fromARGB(255, 247, 153, 38)),
+          const RouletteUnit.noText(color: Color.fromARGB(255, 130, 219, 63)),
+          const RouletteUnit.noText(color: Color.fromARGB(255, 245, 241, 7)),
         ]),
         vsync: this);
 
@@ -93,39 +95,74 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ルーレット'),
+        title: Text(
+          "Roulette",
+          style: GoogleFonts.nanumPenScript(
+            color: Color.fromARGB(255, 249, 249, 250),
+            fontSize: 40,
+          ),
+        ),
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(100),
-            child: Column(children: [
-              SizedBox(height: 5),
-              TextField(
-                decoration: InputDecoration(
-                    fillColor: Colors.amber,
-                    filled: true,
-                    border: InputBorder.none),
+            padding: const EdgeInsets.only(
+              top: 20,
+            ),
+          ),
+          Text("順番を決めよう！"),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 30,
+                  left: 90,
+                  right: 90,
+                  bottom: 50,
+                ),
+                child: Column(children: [
+                  SizedBox(height: 1),
+                  TextField(
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Colors.pink,
+                      ),
+                      hintText: "name",
+                      // fillColor: Colors.amber,
+                      // filled: true,
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Color.fromARGB(255, 78, 192, 245),
+                      ),
+                      hintText: "name",
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Color.fromARGB(255, 247, 153, 38),
+                      ),
+                      hintText: "name",
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Color.fromARGB(255, 130, 219, 63),
+                      ),
+                      hintText: "name",
+                    ),
+                  ),
+                ]),
               ),
-              TextField(
-                decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 230, 90, 197),
-                    filled: true,
-                    border: InputBorder.none),
-              ),
-              TextField(
-                decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 77, 187, 209),
-                    filled: true,
-                    border: InputBorder.none),
-              ),
-              TextField(
-                decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 177, 235, 116),
-                    filled: true,
-                    border: InputBorder.none),
-              ),
-            ]),
+            ],
           ),
           Container(
             child: Center(
@@ -142,14 +179,14 @@ class _HomePageState extends State<HomePage>
                     alignment: Alignment.topCenter,
                     children: [
                       SizedBox(
-                        width: 260,
-                        height: 260,
+                        width: 250,
+                        height: 250,
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.only(top: 30),
                           child: Roulette(
                             controller: _controller,
                             style: const RouletteStyle(
-                              dividerThickness: 4,
+                              dividerThickness: 2,
                             ),
                           ),
                         ),
@@ -173,7 +210,10 @@ class _HomePageState extends State<HomePage>
           clockwise: _clockwise,
           offset: Random().nextDouble(),
         ),
-        child: const Icon(Icons.refresh_rounded),
+        child: const Icon(
+          Icons.refresh_rounded,
+          color: Colors.white,
+        ),
       ),
     );
   }

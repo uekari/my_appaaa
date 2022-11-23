@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
+import 'package:google_fonts/google_fonts.dart';
 
 // 参考サイト
 // https://qiita.com/ywand/items/9df5cc894bae594d5181
@@ -48,7 +49,15 @@ class _TimerState extends State<NextPage4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Time')),
+      appBar: AppBar(
+        title: Text(
+          "Time",
+          style: GoogleFonts.nanumPenScript(
+            color: Color.fromARGB(255, 249, 249, 250),
+            fontSize: 40,
+          ),
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: ListView(
