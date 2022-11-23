@@ -82,7 +82,7 @@ class _HomepageState extends State<Homepage> {
             CupertinoSliverNavigationBar(
               backgroundColor: Color.fromRGBO(166, 193, 238, 0.3),
               largeTitle: Text(
-                "リスト",
+                "リスト!",
                 style: TextStyle(color: Colors.white),
               ),
               trailing: GestureDetector(
